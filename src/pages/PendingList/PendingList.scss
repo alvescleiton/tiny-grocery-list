@@ -1,0 +1,35 @@
+.page-itens-pendentes {
+    .busca-produto-flutuante {
+        position: fixed;
+        top: 70px;
+        left: 50%;
+        width: calc(100% - 20px);
+        transform: translate(-50%, 0);
+        z-index: 10;
+        input[type=text] {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            box-sizing: border-box;
+            text-align: center;
+            color: #666;
+            box-shadow: 0px 1px 0px #eee;
+            border: 0;
+            border-bottom: 1px solid #aaa;
+            background: #F6F6F6;
+            -webkit-appearance: none;
+        }
+    }
+    .busca-produto-flutuante__clear {
+        position: absolute;
+        top: 20px;
+        right: 16px;
+        transform: translate(0, -50%);
+    }
+    .lista-itens-pendentes {
+        margin-top: 40px;
+        .btn-gerar-lista {
+            margin-top: 30px;
+        }
+    }
+}

@@ -1,0 +1,6 @@
+export const CHANGE_ACTIVE_TAB = 'CHANGE_ACTIVE_TAB'
+export const CHANGE_HEADER_TITLE = 'CHANGE_HEADER_TITLE'
+export const OPEN_MENU = 'OPEN_MENU'
+export const CLOSE_MENU = 'CLOSE_MENU'
+export const BACK_BUTTON = 'BACK_BUTTON'
+export const LOADER = 'LOADER'

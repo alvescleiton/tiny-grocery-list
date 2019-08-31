@@ -1,0 +1,12 @@
+.page-lista-atual {
+    .MuiSvgIcon-root {
+        color: #ccc;
+        margin: 0 3px;
+        &.checked {
+            color: green;
+        }
+    }
+    .finalizar-pedido {
+        margin-top: 20px;
+    }
+}
