@@ -55,7 +55,7 @@ class CurrentList extends Component {
                 products.push(item)
             })
 
-            products = sortElements(products, 'name')
+            products = sortElements(products).by('name')
 
             _this.setState({
                 productList: products
@@ -75,7 +75,7 @@ class CurrentList extends Component {
             let newProductList = this.state.productList.filter(e => e.key !== key)
             newProductList = newProductList.concat(obj)
 
-            newProductList = sortElements(newProductList, 'name')
+            newProductList = sortElements(newProductList).by('name')
 
             this.setState({
                 productList: newProductList

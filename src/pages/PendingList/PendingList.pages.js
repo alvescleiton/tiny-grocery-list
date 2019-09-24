@@ -54,7 +54,7 @@ class PendingList extends Component {
                 products.push(item)
             })
 
-            products = sortElements(products, 'name')
+            products = sortElements(products).by('name')
 
             _this.setState({
                 productList: products
@@ -77,7 +77,7 @@ class PendingList extends Component {
                 products.push(item)
             })
 
-            products = sortElements(products, 'name')
+            products = sortElements(products).by('name')
 
             _this.setState({
                 productPendingItems: products

@@ -47,7 +47,7 @@ class ProductList extends Component {
             let products = Object.values(snapshot.val())
 
             _this.setState({
-                allProducts: sortElements(products, 'name')
+                allProducts: sortElements(products).by('name')
             })
         });
     }
