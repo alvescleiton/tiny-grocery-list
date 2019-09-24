@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { headerTitleAction, tabActiveAction, backButtonAction, loaderAction } from '../../actions'
+import { sortElements } from '../../utils'
 
 import {
     Paper,
@@ -39,13 +40,14 @@ class ProductList extends Component {
 
     listagemGeral = async () => {
         const _this = this
+
         this.productRef = await firebaseRef.child('product')
 
-        await this.productRef.on('value', function(snapshot){
+        await this.productRef.once('value', function(snapshot){
+            let products = Object.values(snapshot.val())
+
             _this.setState({
-                allProducts: Object.values(snapshot.val()).sort(function (a, b) {
-                    return (a.name > b.name ? 1 : (a.name < b.name ? -1 : 0))
-                })
+                allProducts: sortElements(products, 'name')
             })
         });
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { headerTitleAction, tabActiveAction, backButtonAction, loaderAction } from '../../actions'
+import { sortElements } from '../../utils'
 
 import { Paper, Table, TableHead, TableBody, TableRow, TableCell, Button } from '@material-ui/core'
 
@@ -43,7 +44,7 @@ class PendingList extends Component {
 
         this.productRef = await firebaseRef.child('product')
 
-        this.productRef.once("value", function(snapshot) {
+        await this.productRef.once("value", function(snapshot) {
             var products = []
 
             snapshot.forEach((element) => {
@@ -53,15 +54,7 @@ class PendingList extends Component {
                 products.push(item)
             })
 
-            products.sort(function(a, b) {
-                if (a.name > b.name)
-                    return 1
-
-                if (a.name < b.name)
-                    return -1
-
-                return 0
-            })
+            products = sortElements(products, 'name')
 
             _this.setState({
                 productList: products
@@ -74,7 +67,7 @@ class PendingList extends Component {
 
         this.pendingItems = await firebaseRef.child('pending_items')
 
-        this.pendingItems.once("value", function(snapshot) {
+        await this.pendingItems.once("value", function(snapshot) {
             var products = []
 
             snapshot.forEach((element) => {
@@ -84,11 +77,7 @@ class PendingList extends Component {
                 products.push(item)
             })
 
-            products.sort(function(a, b) {
-                if (a.name > b.name) return 1
-                if (a.name < b.name) return -1
-                return 0
-            })
+            products = sortElements(products, 'name')
 
             _this.setState({
                 productPendingItems: products

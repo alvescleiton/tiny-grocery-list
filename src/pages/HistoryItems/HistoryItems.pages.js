@@ -106,7 +106,7 @@ class HistoryItems extends Component {
                     </>
                 )}
 
-                { (!history.items.length && !loader) && (
+                { ((!history.items || !history.items.length) && !loader) && (
                     <div className="nenhum-item">
                         Nenhum item na lista atual!
                     </div>

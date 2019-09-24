@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { headerTitleAction, tabActiveAction, backButtonAction, loaderAction } from '../../actions'
+import { sortElements } from '../../utils'
 
 import {
     Button,
@@ -44,7 +45,7 @@ class CurrentList extends Component {
         const _this = this
         const currentListRef = await firebaseRef.child('current_list')
 
-        currentListRef.once("value", function(snapshot) {
+        await currentListRef.once("value", function(snapshot) {
             var products = []
 
             snapshot.forEach((element) => {
@@ -54,11 +55,7 @@ class CurrentList extends Component {
                 products.push(item)
             })
 
-            products.sort(function(a, b) {
-                if (a.name > b.name) return 1
-                if (a.name < b.name) return -1
-                return 0
-            })
+            products = sortElements(products, 'name')
 
             _this.setState({
                 productList: products
@@ -78,11 +75,7 @@ class CurrentList extends Component {
             let newProductList = this.state.productList.filter(e => e.key !== key)
             newProductList = newProductList.concat(obj)
 
-            newProductList.sort(function(a, b) {
-                if (a.name > b.name) return 1
-                if (a.name < b.name) return -1
-                return 0
-            })
+            newProductList = sortElements(newProductList, 'name')
 
             this.setState({
                 productList: newProductList
