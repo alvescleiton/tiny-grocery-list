@@ -1,6 +1,7 @@
 {
   "name": "grocery-list",
   "version": "0.1.0",
+  "author": "Cleiton Alves <dev.cleitonalves@gmail.com>",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.3.0",
